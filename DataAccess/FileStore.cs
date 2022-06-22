@@ -4,20 +4,16 @@ using System.IO;
 using Newtonsoft.Json;
 using DataAccess.Models;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
 namespace DataAccess
 {
     public class FileStore : IDataStore
     {
         private string filePath { get; }
-        private FileStore(string path)
+        public FileStore(IConfiguration configuration)
         {
-            filePath = path;
-        }
-
-        public static IDataStore Create(string path)
-        {
-            return new FileStore(path);
+            filePath = configuration["JsonFilePath"];
         }
 
         public async Task<IEnumerable<User>> GetUsers()
