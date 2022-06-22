@@ -1,9 +1,10 @@
 ﻿using DataAccess.Models;
 using FluentValidation;
+using Users.Dto;
 
 namespace Users.Validators
 {
-    public class CreateUserValidator : AbstractValidator<User>
+    public class CreateUserValidator : AbstractValidator<CreateUserDto>
     {
         public CreateUserValidator()
         {
